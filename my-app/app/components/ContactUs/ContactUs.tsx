@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import "./ContactUs.css";
 
 export default function ContactUs() {
@@ -13,6 +14,7 @@ export default function ContactUs() {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -21,34 +23,55 @@ export default function ContactUs() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError("");
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        message: "",
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    }, 800);
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Something went wrong.");
+      }
+
+      setSubmitted(true);
+      setFormData({ fullName: "", email: "", phone: "", message: "" });
+    } catch (err: unknown) {
+      setSubmitError(err instanceof Error ? err.message : "Failed to send message.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="contact-us">
-      <div className="contact-us__ambient-glow" />
+      {/* ── Background Image Layer with Red Wave Mesh ── */}
+      <div className="contact-us__bg">
+        <Image
+          src="/data/BG-Contactus.jpg"
+          alt="GridNox Red Cyber Wave Background"
+          fill
+          priority
+          quality={95}
+          className="contact-us__bg-img"
+        />
+        <div className="contact-us__overlay" />
+      </div>
 
       <div className="contact-us__container">
         {/* Header section */}
         <div className="contact-us__header">
-          {/* <span className="contact-us__badge">Contact Us</span> */}
-          <h2 className="contact-us__title">Let&apos;s Connect with GridNox.ai</h2>
-          {/* <p className="contact-us__subtitle">
-            Have questions about GRC Automation or Cybersecurity Consulting? Drop us a message below.
-          </p> */}
+          {/* <span className="contact-us__badge">GET IN TOUCH</span> */}
+          <h1 className="contact-us__title">Let&apos;s Connect</h1>
+          <p className="contact-us__subtitle">
+            Have questions about GRC Automation, AI, or Cybersecurity Consulting? Reach out to our specialists today.
+          </p>
         </div>
 
         {/* Contact Form Card */}
@@ -134,10 +157,10 @@ export default function ContactUs() {
                   id="message"
                   name="message"
                   required
-                  rows={5}
+                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="How can GridNox.ai assist you with GRC Automation or Consulting?"
+                  placeholder="How can GridNox assist your organization with risk, compliance, or technology?"
                   className="contact-us__textarea"
                 />
               </div>
@@ -152,7 +175,7 @@ export default function ContactUs() {
                   <span className="contact-us__spinner" />
                 ) : (
                   <>
-                    <span>Snd Messaege</span>
+                    <span>Send Message</span>
                     <svg
                       width="16"
                       height="16"
@@ -169,6 +192,9 @@ export default function ContactUs() {
                   </>
                 )}
               </button>
+              {submitError && (
+                <p className="contact-us__error">{submitError}</p>
+              )}
             </form>
           )}
         </div>
