@@ -1,16 +1,18 @@
 import Navbar from "../components/Navbar/Navbar";
-import Services from "../components/Services/Services";
+import AboutServices from "../components/AboutServices/AboutServices";
 
 export const metadata = {
-  title: "Services - GridNox.ai",
-  description: "Explore services offered by GridNox.ai.",
+  title: "Our Services | GridNox.ai",
+  description:
+    "Where we create impact. Specialist expertise and intelligent technology that turn risk, regulation and complexity into resilient outcomes.",
 };
 
 export default function ServicesPage() {
   return (
-    <main style={{ position: "relative", minHeight: "100vh", backgroundColor: "#08080c" }}>
+    <main style={{ position: "relative", minHeight: "100vh", backgroundColor: "#000000" }}>
       <Navbar />
-      <Services />
+      <AboutServices initialTab="services" />
     </main>
   );
 }
+

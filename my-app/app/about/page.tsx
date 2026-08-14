@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar/Navbar";
-import About from "../components/About/About";
+import AboutServices from "../components/AboutServices/AboutServices";
 
 export const metadata = {
   title: "About Us | GridNox.ai",
@@ -11,7 +11,8 @@ export default function AboutPage() {
   return (
     <main style={{ position: "relative", minHeight: "100vh", backgroundColor: "#000000" }}>
       <Navbar />
-      <About />
+      <AboutServices initialTab="about" />
     </main>
   );
 }
+

@@ -106,6 +106,12 @@
   background-color: rgba(255, 255, 255, 0.06);
 }
 
+.raycast-navbar__link.is-active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
 .raycast-navbar__cta-btn {
   display: inline-flex;
   align-items: center;
@@ -196,6 +202,12 @@
 .raycast-navbar__mobile-link:hover {
   color: #ffffff;
   background-color: rgba(255, 255, 255, 0.06);
+}
+
+.raycast-navbar__mobile-link.is-active {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
 }
 
 .raycast-navbar__mobile-divider {

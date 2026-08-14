@@ -4,11 +4,11 @@ import "./LandingHero.css";
 
 export default function LandingHero() {
   return (
-    <section className="landing-hero">
+    <section id="home" className="landing-hero">
       <div className="landing-hero__video-wrapper">
         <video
           className="landing-hero__video"
-          src="/data/LandingVideo2.mp4"
+          src="/data/BG-LandingPage.mp4"
           autoPlay
           loop
           muted

@@ -8,25 +8,79 @@ import "./Navbar.css";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
+    // Sync initial hash if present
+    if (typeof window !== "undefined" && window.location.hash) {
+      const hash = window.location.hash.replace("#", "");
+      if (hash === "about" || hash === "services") {
+        setActiveSection(hash);
+      }
+    }
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      // Scroll spy for active section highlight
+      const scrollPosition = window.scrollY + 300;
+      const aboutServicesEl = document.getElementById("about-services");
+      const homeEl = document.getElementById("home");
+
+      if (homeEl && scrollPosition < (aboutServicesEl ? aboutServicesEl.offsetTop : 500)) {
+        setActiveSection("home");
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Listen for tab changes from inside the section
+  useEffect(() => {
+    const handleTabActive = (e) => {
+      if (e.detail === "about" || e.detail === "services") {
+        setActiveSection(e.detail);
+      }
+    };
+    window.addEventListener("gridnox-tab-active", handleTabActive);
+    return () => window.removeEventListener("gridnox-tab-active", handleTabActive);
+  }, []);
+
   const navLinks = [
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
+    // { label: "Home", href: "/#home", id: "home" },
+    { label: "Why Us", href: "/#about", id: "about" },
+    { label: "How We Help", href: "/#services", id: "services" },
   ];
+
+  const handleNavClick = (e, href) => {
+    if (href.includes("#")) {
+      const targetId = href.split("#")[1];
+      if (targetId === "about" || targetId === "services") {
+        window.dispatchEvent(new CustomEvent("gridnox-set-tab", { detail: targetId }));
+      }
+
+      const el = document.getElementById(targetId) || document.getElementById("about-services");
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", `#${targetId}`);
+        setActiveSection(targetId);
+      }
+    }
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className={`raycast-navbar-wrapper ${scrolled ? "is-scrolled" : ""}`}>
       <div className="raycast-navbar">
         {/* Left Side: Logo & Website Name */}
-        <Link href="/" className="raycast-navbar__brand">
+        <Link
+          href="/#home"
+          className="raycast-navbar__brand"
+          onClick={(e) => handleNavClick(e, "/#home")}
+        >
           <div className="raycast-navbar__logo-box">
             <Image
               src="/data/Logo.png"
@@ -40,14 +94,22 @@ export default function Navbar() {
           <span className="raycast-navbar__brand-name">GridNox.ai</span>
         </Link>
 
-        {/* Right Side: Nav Links (About, Services) & Contact Us Page Link */}
+        {/* Right Side: Nav Links (Home, About, Services) & Contact Us CTA */}
         <div className="raycast-navbar__actions">
           <nav className="raycast-navbar__menu">
-            {navLinks.map((link) => (
-              <Link key={link.label} href={link.href} className="raycast-navbar__link">
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`raycast-navbar__link ${isActive ? "is-active" : ""}`}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <Link href="/contact" className="raycast-navbar__cta-btn">
@@ -93,16 +155,19 @@ export default function Navbar() {
       {/* Mobile Responsive Dropdown */}
       {mobileMenuOpen && (
         <div className="raycast-navbar__mobile-menu">
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="raycast-navbar__mobile-link"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`raycast-navbar__mobile-link ${isActive ? "is-active" : ""}`}
+                onClick={(e) => handleNavClick(e, link.href)}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
           <div className="raycast-navbar__mobile-divider" />
           <Link
             href="/contact"

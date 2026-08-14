@@ -1,11 +1,7 @@
 "use client";
 
-import "./Services.css";
+import AboutServices from "../AboutServices/AboutServices";
 
 export default function Services() {
-  return (
-    <div className="services-container">
-      <span className="services-loading-text">LOADING</span>
-    </div>
-  );
+  return <AboutServices initialTab="services" />;
 }
