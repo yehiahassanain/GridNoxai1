@@ -1,16 +1,25 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import "./Navbar.css";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("");
+
+  const isContactPage = pathname === "/contact";
 
   useEffect(() => {
+    if (pathname === "/contact") {
+      setActiveSection("contact");
+      return;
+    }
+
     // Sync initial hash if present
     if (typeof window !== "undefined" && window.location.hash) {
       const hash = window.location.hash.replace("#", "");
@@ -22,8 +31,13 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Scroll spy for active section highlight
-      const scrollPosition = window.scrollY + 300;
+      if (pathname === "/contact") {
+        setActiveSection("contact");
+        return;
+      }
+
+      // Scroll spy for active section highlight on landing page
+      const scrollPosition = window.scrollY + 350;
       const aboutServicesEl = document.getElementById("about-services");
       const homeEl = document.getElementById("home");
 
@@ -35,10 +49,12 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   // Listen for tab changes from inside the section
   useEffect(() => {
+    if (pathname === "/contact") return;
+
     const handleTabActive = (e) => {
       if (e.detail === "about" || e.detail === "services") {
         setActiveSection(e.detail);
@@ -46,12 +62,12 @@ export default function Navbar() {
     };
     window.addEventListener("gridnox-tab-active", handleTabActive);
     return () => window.removeEventListener("gridnox-tab-active", handleTabActive);
-  }, []);
+  }, [pathname]);
 
   const navLinks = [
     // { label: "Home", href: "/#home", id: "home" },
-    { label: "Why Us", href: "/#about", id: "about" },
     { label: "How We Help", href: "/#services", id: "services" },
+    { label: "Why Us", href: "/#about", id: "about" },
   ];
 
   const handleNavClick = (e, href) => {
@@ -61,12 +77,14 @@ export default function Navbar() {
         window.dispatchEvent(new CustomEvent("gridnox-set-tab", { detail: targetId }));
       }
 
-      const el = document.getElementById(targetId) || document.getElementById("about-services");
-      if (el) {
-        e.preventDefault();
-        el.scrollIntoView({ behavior: "smooth" });
-        window.history.pushState(null, "", `#${targetId}`);
-        setActiveSection(targetId);
+      if (pathname === "/") {
+        const el = document.getElementById(targetId) || document.getElementById("about-services");
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: "smooth" });
+          window.history.pushState(null, "", `#${targetId}`);
+          setActiveSection(targetId);
+        }
       }
     }
     setMobileMenuOpen(false);
@@ -112,7 +130,10 @@ export default function Navbar() {
             })}
           </nav>
 
-          <Link href="/contact" className="raycast-navbar__cta-btn">
+          <Link
+            href="/contact"
+            className={`raycast-navbar__cta-btn ${isContactPage ? "is-active" : ""}`}
+          >
             <span>Contact Us</span>
             <svg
               width="14"
@@ -171,7 +192,7 @@ export default function Navbar() {
           <div className="raycast-navbar__mobile-divider" />
           <Link
             href="/contact"
-            className="raycast-navbar__cta-btn raycast-navbar__mobile-cta"
+            className={`raycast-navbar__cta-btn raycast-navbar__mobile-cta ${isContactPage ? "is-active" : ""}`}
             onClick={() => setMobileMenuOpen(false)}
           >
             <span>Contact Us</span>

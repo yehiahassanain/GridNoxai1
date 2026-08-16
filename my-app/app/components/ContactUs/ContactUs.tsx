@@ -79,7 +79,7 @@ export default function ContactUs() {
           {submitted ? (
             <div className="contact-us__success">
               <div className="contact-us__success-icon">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
               </div>
@@ -157,10 +157,10 @@ export default function ContactUs() {
                   id="message"
                   name="message"
                   required
-                  rows={4}
+                  rows={2}
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="How can GridNox assist your organization with risk, compliance, or technology?"
+                  placeholder="How can GridNox assist your organization?"
                   className="contact-us__textarea"
                 />
               </div>
@@ -177,8 +177,8 @@ export default function ContactUs() {
                   <>
                     <span>Send Message</span>
                     <svg
-                      width="16"
-                      height="16"
+                      width="15"
+                      height="15"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"

@@ -138,6 +138,17 @@
   transform: translateY(0);
 }
 
+.raycast-navbar__cta-btn.is-active {
+  background-color: #ef4444;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.45);
+}
+
+.raycast-navbar__cta-btn.is-active:hover {
+  background-color: #dc2626;
+  box-shadow: 0 0 22px rgba(239, 68, 68, 0.65);
+}
+
 .raycast-navbar__cta-arrow {
   transition: transform 0.2s ease;
 }
