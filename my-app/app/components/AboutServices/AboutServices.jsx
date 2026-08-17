@@ -227,8 +227,8 @@ export default function AboutServices({ initialTab = "services" }) {
         {/* ── Foreground Interactive Layout ── */}
         <div className="about-services-container">
           {/* Sleek Segment Switcher Pill Indicator */}
-          <div className="about-services-switcher-wrap">
-            <div className="about-services-switcher" role="tablist" aria-label="Section Indicator">
+          {/* <div className="about-services-switcher-wrap"> */}
+            {/* <div className="about-services-switcher" role="tablist" aria-label="Section Indicator"> */}
               {/* <button
                 type="button"
                 role="tab"
@@ -249,8 +249,8 @@ export default function AboutServices({ initialTab = "services" }) {
                 <span className="switcher-dot" />
                 <span>Why Us</span>
               </button> */}
-            </div>
-          </div>
+            {/* </div> */}
+          {/* </div> */}
 
           {/* Dynamic Dual-Stage Content Area */}
           <div className="about-services-content-stage">
@@ -306,18 +306,20 @@ export default function AboutServices({ initialTab = "services" }) {
               }}
             >
               <div className="about-view-content">
-                <span className="about-services-badge">ABOUT US</span>
+                {/* <span className="about-services-badge">ABOUT US</span> */}
 
                 <h2 className="about-services-headline">
-                  Built for organizations<br />
-                  where risk is not theoretical.
+                  Designed for complexity.<br />
+                  Built for resilience.
                 </h2>
 
                 <div className="about-services-accent-line" />
 
                 <p className="about-services-description">
-                  <span className="about-services-brand-red">GridNox</span> helps regulated and critical enterprises improve governance, cybersecurity, and operational resilience through GRC, AI, automation, and enterprise technology.<br className="about-services-br" />
-                  We help organizations across the Middle East move from traditional compliance to intelligent, continuous risk management.
+                  {/* <span className="about-services-brand-red">GridNox</span> */}
+                   At the intersection of cyber risk, regulation and technology, GridNox turns <br className="about-services-br" />
+                   requirements into clear strategies, intelligent systems and resilient operations.
+                 
                 </p>
               </div>
             </div>

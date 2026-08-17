@@ -22,6 +22,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  scrollbar-color: #ff3344 #050508;
+  scrollbar-width: thin;
 }
 
 body {
@@ -33,3 +35,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ── Custom Sleek Red Scrollbar (Right Side) ── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050508;
+  border-left: 1px solid rgba(255, 51, 68, 0.12);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff4d5d 0%, #e60017 50%, #99000f 100%);
+  border-radius: 9999px;
+  border: 1.5px solid #050508;
+  box-shadow: 0 0 10px rgba(255, 51, 68, 0.5);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff6675 0%, #ff1a2e 50%, #c40013 100%);
+  box-shadow: 0 0 14px rgba(255, 51, 68, 0.85);
+}
+
+
+

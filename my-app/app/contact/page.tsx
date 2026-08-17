@@ -10,10 +10,12 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <main style={{ position: "relative", minHeight: "100vh", backgroundColor: "#000000" }}>
+    <main style={{ position: "relative", minHeight: "100vh", width: "100%", overflowX: "hidden", backgroundColor: "#000000" }}>
       <Navbar />
       <ContactUs />
       <Footer />
     </main>
   );
 }
+
+

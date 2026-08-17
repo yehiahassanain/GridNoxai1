@@ -8,7 +8,7 @@ export default function LandingHero() {
       <div className="landing-hero__video-wrapper">
         <video
           className="landing-hero__video"
-          src="/data/BG-LandingPage1.mp4"
+          src="/data/BG-landing1.mp4"
           autoPlay
           loop
           muted
