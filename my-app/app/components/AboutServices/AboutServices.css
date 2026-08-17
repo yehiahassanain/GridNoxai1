@@ -355,7 +355,7 @@
 .services-card-title {
   color: #ffffff;
   font-family: var(--font-geist-sans), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: clamp(1.15rem, 1.35vw, 1.35rem);
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
   font-weight: 500;
   margin: 0;
   letter-spacing: -0.015em;

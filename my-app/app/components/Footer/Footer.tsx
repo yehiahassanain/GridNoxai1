@@ -80,7 +80,7 @@ export default function Footer() {
         <div className="footer-body">
           <div className="footer-bg">
             <Image
-              src="/data/Footer_Waves.png"
+              src="/data/Footer_Waves2.png"
               alt="GridNox Footer Wave Background"
               fill
               priority
