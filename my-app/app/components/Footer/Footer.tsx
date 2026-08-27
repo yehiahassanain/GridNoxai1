@@ -11,18 +11,8 @@ export default function Footer() {
           position: relative;
           width: 100%;
           background: #000000;
-          margin-top: 60px;
+          margin-top: 0;
         }
-        // .footer-line-wrap {
-        //   max-width: 1240px;
-        //   margin: 0 auto;
-        //   padding: 0 2rem;
-        // }
-        // .footer-divider {
-        //   width: 100%;
-        //   height: 1px;
-        //   background: rgba(255, 255, 255, 0.08);
-        // }
         .footer-body {
           position: relative;
           width: 100%;
@@ -47,12 +37,20 @@ export default function Footer() {
         .footer-overlay {
           position: absolute;
           inset: 0;
-          background: radial-gradient(
-            ellipse 90% 80% at 50% 30%,
-            transparent 0%,
-            rgba(0, 0, 0, 0.2) 60%,
-            rgba(0, 0, 0, 0.75) 100%
-          );
+          background:
+            linear-gradient(
+              0deg,
+              rgba(0, 0, 0, 0.45) 0%,
+              rgba(0, 0, 0, 0.15) 30%,
+              rgba(0, 0, 0, 0.5) 70%,
+              #000000 100%
+            ),
+            radial-gradient(
+              ellipse 80% 60% at 50% 55%,
+              rgba(239, 68, 68, 0.06) 0%,
+              rgba(0, 0, 0, 0.45) 50%,
+              rgba(0, 0, 0, 0.85) 100%
+            );
           pointer-events: none;
         }
         .footer-inner {
@@ -74,9 +72,6 @@ export default function Footer() {
         }
       `}</style>
       <footer className="site-footer">
-        {/* <div className="footer-line-wrap">
-          <div className="footer-divider" />
-        </div> */}
         <div className="footer-body">
           <div className="footer-bg">
             <Image
