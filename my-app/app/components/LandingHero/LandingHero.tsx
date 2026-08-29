@@ -20,9 +20,10 @@ export default function LandingHero() {
 
       <div className="landing-hero__content">
         <h1 className="landing-hero__headline">
-          At GridNox.AI,<br /> we excel in
+          The <span className="text-[#ef4444]">Grid </span> for Risk &amp; Cyber Resilience
         </h1>
-        <p className="landing-hero__tagline">GRC Automation &amp; Cybersecurity Consulting</p>
+        {/* &amp;  */}
+        <p className="landing-hero__tagline">Where enterprise risk, compliance &amp; technology converge into resilient outcomes</p>
       </div>
     </section>
   );

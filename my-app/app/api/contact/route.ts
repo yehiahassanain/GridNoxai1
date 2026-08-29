@@ -23,8 +23,8 @@ export async function POST(req: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "GridNox.ai Contact <onboarding@resend.dev>",
-      to: ["Moealy1@outlook.com"],
+      from: "GridNox.ai Contact <contact@gridnox.ai>",
+      to: ["Mm@gridnox.ai"],
       replyTo: email,
       subject: `New Contact Form Submission from ${fullName}`,
       html: `

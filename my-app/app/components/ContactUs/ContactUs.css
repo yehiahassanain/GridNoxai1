@@ -8,12 +8,13 @@
   height: 100vh;
   min-height: 100vh;
   width: 100%;
-  padding: 5.5rem 1.25rem 2rem 1.25rem;
+  padding: 5.5rem 1.25rem 4rem 1.25rem;
+  margin: 7rem 0rem -1rem 0rem;
   background-color: #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   box-sizing: border-box;
 }
 
@@ -65,7 +66,7 @@
 /* ── Header ──────────────────────────────────────────────── */
 .contact-us__header {
   text-align: center;
-  margin-bottom: 1.15rem;
+  margin-bottom: 2rem;
 }
 
 .contact-us__badge {
@@ -107,6 +108,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 1.4rem 1.85rem;
+  
   box-shadow: 
     0 22px 48px -12px rgba(0, 0, 0, 0.85),
     0 0 0 1px rgba(255, 255, 255, 0.02),
@@ -309,7 +311,7 @@
     padding: 6.5rem 1rem 3rem 1rem;
   }
   .contact-us__card {
-    padding: 1.25rem 1.15rem;
+    padding: -1.25rem -1.15rem;
   }
   .contact-us__grid {
     grid-template-columns: 1fr;

@@ -317,8 +317,8 @@ export default function AboutServices({ initialTab = "services" }) {
 
                 <p className="about-services-description">
                   {/* <span className="about-services-brand-red">GridNox</span> */}
-                   At the intersection of cyber risk, regulation and technology, GridNox turns <br className="about-services-br" />
-                   requirements into clear strategies, intelligent systems and resilient operations.
+                 GridNox combines specialist expertise and intelligent technology to turn risk, regulation and complexity into resilient outcomes.<br className="about-services-br" />
+                  
                 </p>
               </div>
             </div>

@@ -68,9 +68,9 @@ export default function ContactUs() {
         {/* Header section */}
         <div className="contact-us__header">
           {/* <span className="contact-us__badge">GET IN TOUCH</span> */}
-          <h1 className="contact-us__title">Let&apos;s Connect</h1>
+          <h1 className="contact-us__title">Let&apos;s Break the Ice</h1>
           <p className="contact-us__subtitle">
-            Have questions about GRC Automation, AI, or Cybersecurity Consulting? Reach out to our specialists today.
+            Curious about GridNox.AI? Send us a message.
           </p>
         </div>
 

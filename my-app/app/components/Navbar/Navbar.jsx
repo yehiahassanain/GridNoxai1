@@ -66,8 +66,8 @@ export default function Navbar() {
 
   const navLinks = [
     // { label: "Home", href: "/#home", id: "home" },
-    { label: "How We Help", href: "/#services", id: "services" },
-    { label: "Why Us", href: "/#about", id: "about" },
+    { label: "Our Impact", href: "/#services", id: "services" },
+    { label: "The Grid", href: "/#about", id: "about" },
   ];
 
   const handleNavClick = (e, href) => {
@@ -134,7 +134,7 @@ export default function Navbar() {
             href="/contact"
             className={`raycast-navbar__cta-btn ${isContactPage ? "is-active" : ""}`}
           >
-            <span>Contact Us</span>
+            <span>Let&apos;s talk</span>
             <svg
               width="14"
               height="14"
@@ -195,7 +195,7 @@ export default function Navbar() {
             className={`raycast-navbar__cta-btn raycast-navbar__mobile-cta ${isContactPage ? "is-active" : ""}`}
             onClick={() => setMobileMenuOpen(false)}
           >
-            <span>Contact Us</span>
+            <span>Let&apos;s talk.</span>
             <svg
               width="14"
               height="14"
