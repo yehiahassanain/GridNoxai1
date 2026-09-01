@@ -147,9 +147,9 @@ export default function AboutServices({ initialTab = "services" }) {
 
     const handleInitialHash = () => {
       const hash = window.location.hash.replace("#", "");
-      if (hash === "about" || initialTab === "about") {
+      if (hash === "about") {
         setTimeout(() => scrollToTarget("about"), 150);
-      } else if (hash === "services" || initialTab === "services") {
+      } else if (hash === "services") {
         setTimeout(() => scrollToTarget("services"), 150);
       }
     };
