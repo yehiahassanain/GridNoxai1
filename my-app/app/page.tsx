@@ -5,9 +5,18 @@ import Services from "./components/Services/Services";
 import Footer from "./components/Footer/Footer";
 
 export const metadata = {
-  title: "GridNox.ai",
+  title: "GRC, AI & Cyber Resilience for Regulated Enterprises",
   description:
-    "GridNox helps regulated and critical enterprises improve governance, cybersecurity, and operational resilience through GRC, AI, and automation.",
+    "GridNox empowers regulated enterprises with AI-driven GRC automation, cybersecurity consulting, and operational resilience solutions. Transform risk into resilient outcomes.",
+  openGraph: {
+    title: "GridNox.ai — GRC, AI & Cyber Resilience for Regulated Enterprises",
+    description:
+      "GridNox empowers regulated enterprises with AI-driven GRC automation, cybersecurity consulting, and operational resilience solutions.",
+    url: "https://www.gridnox.ai",
+  },
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function Home() {
