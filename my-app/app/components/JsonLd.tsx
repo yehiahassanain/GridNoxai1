@@ -3,6 +3,21 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "GridNox.ai",
+    alternateName: [
+      "GridNox",
+      "gridnox",
+      "gridnox.ai",
+      "gridnox ai",
+      "grid nox",
+      "grid nox ai",
+      "gidenox",
+      "gidenox ai",
+      "gidnox",
+      "gidnox ai",
+      "gridnoks",
+      "gridenox",
+      "gridnoxai",
+    ],
     url: "https://www.gridnox.ai",
     logo: "https://www.gridnox.ai/data/Logo.png",
     description:
@@ -19,6 +34,13 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "GridNox.ai",
+    alternateName: [
+      "GridNox",
+      "gidenox",
+      "gidnox",
+      "gridnoks",
+      "gridenox",
+    ],
     url: "https://www.gridnox.ai",
   };
 
@@ -39,3 +61,4 @@ export default function JsonLd() {
     </>
   );
 }
+
