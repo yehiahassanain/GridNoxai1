@@ -24,6 +24,8 @@ html {
   scroll-padding-top: 80px;
   scrollbar-color: #ff3344 #050508;
   scrollbar-width: thin;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 body {
@@ -34,6 +36,8 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 /* ── Custom Sleek Red Scrollbar (Right Side) ── */
