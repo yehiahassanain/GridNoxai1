@@ -82,7 +82,9 @@ export default function Navbar() {
         if (el) {
           e.preventDefault();
           el.scrollIntoView({ behavior: "smooth" });
-          window.history.pushState(null, "", `#${targetId}`);
+          if (targetId === "about" || targetId === "services") {
+            window.history.pushState(null, "", `#${targetId}`);
+          }
           setActiveSection(targetId);
         }
       }
